@@ -9,31 +9,21 @@ class Clowker extends Controller
 {
     //
     
-    public function buat() {
-        $lowker = new Lowker; 
-        $all_lowker =  $lowker->dataLowker(); 
-        echo var_dump(json_encode($all_lowker));
-    }
-    
     public function baca() {
         $lowker = new Lowker; 
         $all_lowker =  $lowker->dataLowker(); 
-        echo json_encode($all_lowker);
+        // echo json_encode($all_lowker);
+        return response()->json($all_lowker);
     }
     
-    public function ubah() {
-        $lowker = new Lowker; 
-        $all_lowker =  $lowker->dataLowker(); 
-        echo var_dump(json_encode($all_lowker));
+    public function bacasatu($json) {
+        $request = json_decode($json);
+
+        $lowker = Lowker::find($request->id);
+        return response()->json($lowker);
     }
 
-    public function hapus() {
-        $lowker = new Lowker; 
-        $all_lowker =  $lowker->dataLowker(); 
-        echo var_dump(json_encode($all_lowker));
-    }
-
-    public function insertlowker(Request $request){       
+    public function insertlowker(Request $request){      
         $lowker = new Lowker;
         $lowker->nama = $request->input('nama');
         $lowker->deskripsi = $request->input('deskripsi');
@@ -79,11 +69,5 @@ class Clowker extends Controller
         $lowker = Lowker::find($request->id);
         $lowker->delete();
         return response()->json($lowker);
-    }
-
-    public function cekjson(Request $request){
-        // echo var_dump($request->input('dddd'));
-        echo var_dump($request);
-        // $request = json_decode($json);
     }
 }

@@ -50,7 +50,7 @@ const Dashboard = () => {
                   <td>
                     <Button href={'sisipan/' + JSON.stringify({id : val.id})}  variant="outline-primary" size="lg"> <BsDatabaseFillGear /> Upd </Button>
                     <br></br>
-                    <Button href={'http://127.0.0.1:8000/api/del/' + JSON.stringify({id : val.id})}  variant="outline-danger" size="lg"> <BsDatabaseFillX /> Del </Button>
+                    <Button href={'hapus/' + JSON.stringify({id : val.id})}  variant="outline-danger" size="lg"> <BsDatabaseFillX /> Del </Button>
                 </td>
               </tr>
               )

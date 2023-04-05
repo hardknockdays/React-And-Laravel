@@ -8,6 +8,7 @@ import "./index.css";
 import App from "./App";
 import Baca from "./Baca";
 import Sisipan from "./Sisipan";
+import Hapus from "./Hapus";
 import Dashboard from './Dashboard';
 // import Root from "./routes/root";
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/sisipan",
     element: <Sisipan />,
+  },
+  {
+    path: "/hapus/:json",
+    element: <Hapus />,
   },
   {
     path: "/dashboard",

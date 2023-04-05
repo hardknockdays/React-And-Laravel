@@ -67,15 +67,17 @@ CREATE TABLE `lowker` (
   `open` datetime NOT NULL COMMENT 'Tanggal Dibuka',
   `close` datetime NOT NULL COMMENT 'Tanggal Ditutup',
   `kuota` int(11) NOT NULL,
-  `dibuat` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `lowker` */
 
-insert  into `lowker`(`id`,`nama`,`deskripsi`,`tpm`,`open`,`close`,`kuota`,`dibuat`) values 
-(1,'programmer','Full Stack / Supperman','s1','2023-04-05 13:57:31','2029-04-05 13:57:37',90,'2023-04-05 15:30:48'),
-(2,'designer','yang penting bisa design','s3','2023-04-04 13:58:41','2029-12-28 13:58:50',100,'2023-04-05 15:30:48');
+insert  into `lowker`(`id`,`nama`,`deskripsi`,`tpm`,`open`,`close`,`kuota`,`updated_at`,`created_at`) values 
+(1,'programmer','Full Stack / Supperman','s1','2023-04-05 23:16:05','2023-04-05 23:16:05',90,'2023-04-05 16:30:56','2023-04-05 16:30:56'),
+(2,'designer','yang penting bisa design','s3','2023-04-05 23:16:05','2023-04-05 23:16:05',100,'2023-04-05 16:31:48','2023-04-05 16:31:48'),
+(12,'sadsadasdw','wqewqeqw','','2023-04-06 02:22:00','2030-12-06 02:24:00',5,'2023-04-05 21:57:39','2023-04-05 21:57:39');
 
 /*Table structure for table `migrations` */
 
@@ -86,16 +88,16 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
 insert  into `migrations`(`id`,`migration`,`batch`) values 
-(50,'2014_10_12_000000_create_users_table',1),
-(51,'2014_10_12_100000_create_password_reset_tokens_table',1),
-(52,'2019_08_19_000000_create_failed_jobs_table',1),
-(53,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(54,'create_lowker_table',1);
+(55,'2014_10_12_000000_create_users_table',1),
+(56,'2014_10_12_100000_create_password_reset_tokens_table',1),
+(57,'2019_08_19_000000_create_failed_jobs_table',1),
+(58,'2019_12_14_000001_create_personal_access_tokens_table',1),
+(59,'create_lowker_table',1);
 
 /*Table structure for table `password_reset_tokens` */
 
