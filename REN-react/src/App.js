@@ -17,6 +17,14 @@ function App() {
         >
           Learn React
         </a>
+        <br></br>
+        <a
+          className="App-link"
+          href="/baca"
+          rel="noopener noreferrer"
+        >
+          User Read
+        </a>
       </header>
     </div>
   );
