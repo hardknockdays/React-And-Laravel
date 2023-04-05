@@ -25,6 +25,14 @@ function App() {
         >
           User Read
         </a>
+        <br></br>
+        <a
+          className="App-link"
+          href="/dashboard"
+          rel="noopener noreferrer"
+        >
+          Dashboard Admin
+        </a>
       </header>
     </div>
   );

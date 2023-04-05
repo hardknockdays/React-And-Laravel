@@ -7,6 +7,8 @@ import {
 import "./index.css";
 import App from "./App";
 import Baca from "./Baca";
+import Sisipan from "./Sisipan";
+import Dashboard from './Dashboard';
 // import Root from "./routes/root";
 
 const router = createBrowserRouter([
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/baca",
     element: <Baca />,
+  },
+  {
+    path: "/sisipan",
+    element: <Sisipan />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

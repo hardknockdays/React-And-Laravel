@@ -14,7 +14,7 @@ use App\Http\Controllers\Clowker;
 |
 */
 
-Route::get('/', function () {
+Route::match(['get', 'post'],'/', function () {
     return view('welcome');
 });
 
@@ -22,7 +22,14 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/createlowker', [Clowker::class, 'buat']);
-Route::get('/api/readlowker', [Clowker::class, 'baca']);
-Route::get('/updatelowker', [Clowker::class, 'ubah']);
-Route::get('/deletelowker', [Clowker::class, 'hapus']);
+Route::match(['get', 'post'], '/api/createlowker', [Clowker::class, 'buat']);
+Route::match(['get', 'post'], '/api/readlowker', [Clowker::class, 'baca']);
+Route::match(['get', 'post'], '/api/updatelowker', [Clowker::class, 'ubah']);
+Route::match(['get', 'post'], '/api/deletelowker', [Clowker::class, 'hapus']);
+
+Route::match(['get', 'post'], '/api/inslowker', [Clowker::class, 'insertlowker']);
+Route::match(['get', 'post'], '/api/ins/{json}', [Clowker::class, 'insertjson']);
+Route::match(['get', 'post'], '/api/upd/{json}', [Clowker::class, 'updatejson']);
+Route::match(['get', 'post'], '/api/del/{json}', [Clowker::class, 'deletejson']);
+
+Route::post('/api/cek', [Clowker::class, 'cekjson']);

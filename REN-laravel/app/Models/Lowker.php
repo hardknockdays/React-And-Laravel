@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 
 class Lowker extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     /**
      * The table associated with the model.
@@ -30,6 +32,10 @@ class Lowker extends Model
      * @var string
      */
     protected $connection = 'mysql';
+
+    protected $fillable = [
+        'nama', 'deskripsi', 'tpm', 'open', 'close', 'kuota'
+    ];
 
     public function dataLowker() {
         $dtlowker = DB::table('lowker')->get(); 

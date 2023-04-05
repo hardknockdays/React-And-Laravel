@@ -19,7 +19,8 @@ return new class extends Migration
             $table->dateTime('open')->comment('Tanggal Dibuka');
             $table->dateTime('close')->comment('Tanggal Ditutup');
             $table->integer('kuota');
-            $table->timestamp('dibuat')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

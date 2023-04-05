@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Table} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsDatabaseAdd, BsDatabaseFillX, BsDatabaseFillGear } from "react-icons/bs";
 
-const Baca = () => {
+const Dashboard = () => {
   const [lowkers, setLowker] = useState([])
   var urut = 1
 
@@ -20,6 +21,8 @@ const Baca = () => {
   return (
     <div className="container">
       <center><h1 className='container'>LIST LOWKER</h1></center>
+      
+      <Button href="/sisipan" variant="outline-primary" size="lg"> <BsDatabaseAdd /> Add </Button>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -30,6 +33,7 @@ const Baca = () => {
             <th>Tanggal Dibuka</th>
             <th>Tanggal Ditutup</th>
             <th>Kuota</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +47,11 @@ const Baca = () => {
                   <td>{val.open}</td>
                   <td>{val.close}</td>
                   <td>{val.kuota}</td>
+                  <td>
+                    <Button href={'sisipan/' + JSON.stringify({id : val.id})}  variant="outline-primary" size="lg"> <BsDatabaseFillGear /> Upd </Button>
+                    <br></br>
+                    <Button href={'http://127.0.0.1:8000/api/del/' + JSON.stringify({id : val.id})}  variant="outline-danger" size="lg"> <BsDatabaseFillX /> Del </Button>
+                </td>
               </tr>
               )
           )}
@@ -52,4 +61,4 @@ const Baca = () => {
   )
 }
 
-export default Baca;
+export default Dashboard;
