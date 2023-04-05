@@ -23,6 +23,6 @@ Route::get('/', function () {
 // });
 
 Route::get('/createlowker', [Clowker::class, 'buat']);
-Route::get('/readlowker', [Clowker::class, 'baca']);
+Route::get('/api/readlowker', [Clowker::class, 'baca']);
 Route::get('/updatelowker', [Clowker::class, 'ubah']);
 Route::get('/deletelowker', [Clowker::class, 'hapus']);

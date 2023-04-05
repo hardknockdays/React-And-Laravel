@@ -18,7 +18,7 @@ class Clowker extends Controller
     public function baca() {
         $lowker = new Lowker; 
         $all_lowker =  $lowker->dataLowker(); 
-        echo var_dump(json_encode($all_lowker));
+        echo json_encode($all_lowker);
     }
     
     public function ubah() {
