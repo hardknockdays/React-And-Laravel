@@ -11,7 +11,8 @@ const Hapus = () => {
   
   let handleSubmit = async (e) => {
     try {
-      let res = await fetch("http://127.0.0.1:8000/api/del/" + json, {
+      // let res = 
+      await fetch("http://127.0.0.1:8000/api/del/" + json, {
         method: "GET",
       });
     } catch (err) {

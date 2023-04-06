@@ -48,7 +48,7 @@ const Dashboard = () => {
                   <td>{val.close}</td>
                   <td>{val.kuota}</td>
                   <td>
-                    <Button href={'sisipan/' + JSON.stringify({id : val.id})}  variant="outline-primary" size="lg"> <BsDatabaseFillGear /> Upd </Button>
+                    <Button href={'ubah/' + JSON.stringify({id : val.id})}  variant="outline-primary" size="lg"> <BsDatabaseFillGear /> Upd </Button>
                     <br></br>
                     <Button href={'hapus/' + JSON.stringify({id : val.id})}  variant="outline-danger" size="lg"> <BsDatabaseFillX /> Del </Button>
                 </td>

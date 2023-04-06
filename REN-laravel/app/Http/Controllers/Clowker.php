@@ -23,7 +23,7 @@ class Clowker extends Controller
         return response()->json($lowker);
     }
 
-    public function insertlowker(Request $request){      
+    public function insertlowker(Request $request){       
         $lowker = new Lowker;
         $lowker->nama = $request->input('nama');
         $lowker->deskripsi = $request->input('deskripsi');
@@ -54,11 +54,11 @@ class Clowker extends Controller
 
         $lowker = Lowker::find($request->id);
         $lowker->nama = $request->nama;
-        $lowker->deskripsi = $request->deskripsi;
+        $lowker->deskripsi = $request->desk;
         $lowker->tpm = $request->tpm;
-        $lowker->open = $request->open;
-        $lowker->close = $request->close;
-        $lowker->kuota = $request->kuota;
+        $lowker->open = $request->opn;
+        $lowker->close = $request->cls;
+        $lowker->kuota = $request->qt;
         $lowker->update();
         return response()->json($lowker);
     }

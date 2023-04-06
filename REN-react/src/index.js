@@ -9,6 +9,7 @@ import App from "./App";
 import Baca from "./Baca";
 import Sisipan from "./Sisipan";
 import Hapus from "./Hapus";
+import Ubah from "./Ubah";
 import Dashboard from './Dashboard';
 // import Root from "./routes/root";
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/sisipan",
     element: <Sisipan />,
+  },
+  {
+    path: "/ubah/:json",
+    element: <Ubah />,
   },
   {
     path: "/hapus/:json",

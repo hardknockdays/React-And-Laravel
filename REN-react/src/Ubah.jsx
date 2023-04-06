@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Sisipan = () => {
-
+const Ubah = () => {
   const [nama, setNama] = useState("");
   const [desk, setDesk] = useState("");
   const [tpm, setTpm] = useState("");
@@ -12,11 +12,17 @@ const Sisipan = () => {
   const [cls, setCls] = useState("");
   const [qt, setQt] = useState("");
   const [message, setMessage] = useState("");
+
+  let {json} = useParams();
+  // json = JSON.parse(json);
+  // console.log(json);  
+  // console.log(JSON.parse(json));  
   
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://127.0.0.1:8000/api/ins/" + JSON.stringify({
+      let res = await fetch("http://127.0.0.1:8000/api/upd/" + JSON.stringify({
+        id : JSON.parse(json).id,
         nama : nama,
         desk : desk,
         tpm : tpm,
@@ -29,7 +35,7 @@ const Sisipan = () => {
       // let resJson = 
       await res.json();
       if (res.status === 200) {
-        setMessage("Lowker created successfully");
+        setMessage("Lowker updated successfully");
       } else {
         setMessage("Some error occured");
       }
@@ -38,9 +44,25 @@ const Sisipan = () => {
     }
   };
 
+  useEffect(() => {    
+    const fetchData = async () => {
+      const response = await fetch(`http://127.0.0.1:8000/api/selectlowker/${json}`)
+      const data = await response.json()
+      // setLowker(data)
+      setNama(data.nama)
+      setDesk(data.deskripsi)
+      setTpm(data.tpm)
+      setOpn(data.open)
+      setCls(data.close)
+      setQt(data.kuota)
+    }
+
+    fetchData();
+  }, [json])
+
   return (
     <div className="container">
-      <center><h1 className='container'>INSERT to LOWKER</h1></center>
+      <center><h1 className='container'>UPDATE to LOWKER</h1></center>
       <Form className="container" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="nama">
           <Form.Label>Nama Lowongan</Form.Label>
@@ -71,7 +93,7 @@ const Sisipan = () => {
           <Form.Label>Kuota</Form.Label>
           <Form.Control type="text" placeholder="Jumlah Kuota" value={qt} onChange={(e) => setQt(e.target.value)}/>
         </Form.Group>
-        
+
         <center>
           <Button variant="primary" type="submit" size="lg">
             Submit
@@ -84,61 +106,6 @@ const Sisipan = () => {
       </Form>
     </div>
   );
-
-  // fetch("http://127.0.0.1:8000/api/del/", {
-  //   method: 'POST',    
-  //   mode: 'cors', 
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   search: JSON.stringify({
-  //     id: '4',
-  //   })
-  // })
-
-  // const [lowkers, setLowker] = useState([])
-
-  // const fetchData = async () => {
-  //   const response = await fetch("http://127.0.0.1:8000/api/readlowker")
-  //   const data = await response.json()
-  //   setLowker(data)
-  // }
-
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-
-  // return (
-  //   <Table striped bordered hover>
-  //     <thead>
-  //       <tr>
-  //         <th>#</th>
-  //         <th>Nama</th>
-  //         <th>Deskripsi</th>
-  //         <th>Tingkat Pendidikan Minimal</th>
-  //         <th>Tanggal Dibuka</th>
-  //         <th>Tanggal Ditutup</th>
-  //         <th>Kuota</th>
-  //       </tr>
-  //     </thead>
-  //     <tbody>
-  //       {lowkers.length > 0 && 
-  //           lowkers.map(val => (
-  //             <tr key={val.id}>
-  //               <td>{val.id}</td>
-  //               <td>{val.nama}</td>
-  //               <td>{val.deskripsi}</td>
-  //               <td>{val.tpm}</td>
-  //               <td>{val.open}</td>
-  //               <td>{val.close}</td>
-  //               <td>{val.kuota}</td>
-  //           </tr>
-  //           )
-  //       )}
-  //    </tbody>
-  //   </Table>
-  // )
 }
 
-export default Sisipan;
+export default Ubah;
